@@ -10,22 +10,26 @@ namespace ex29
     {
         static void Main(string[] args)
         {
-            GetNumber();
+            Console.WriteLine("Вы ввели число: " + GetNumber());
         }
 
         static int GetNumber()
         {
-            Console.WriteLine("Введите число: ");
-            var input = Console.ReadLine();
+            bool isRightInput = true;
+            int number = 0;
 
-            if (int.TryParse(input, out int value))
+            while (isRightInput)
             {
-                return value;
+                Console.Write("Введите число: ");
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out number) == true)
+                {
+                    isRightInput = false;
+                }
             }
-            else
-            {
-                Console.WriteLine("Неверное значение!");
-            }
+
+            return number;
         }
     }
 }
